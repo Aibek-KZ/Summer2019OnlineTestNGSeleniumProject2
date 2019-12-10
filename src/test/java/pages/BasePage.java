@@ -16,6 +16,7 @@ import utils.Driver;
 //for example top menu elements don't belong to specific page
 //top menu appears on every single page
 //so we can keep them here
+//
 public class BasePage {
 
     @FindBy(css = "div[class='loader-mask shown']")
