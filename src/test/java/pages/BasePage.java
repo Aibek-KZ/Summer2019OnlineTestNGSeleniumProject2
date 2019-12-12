@@ -16,7 +16,6 @@ import utils.Driver;
 //for example top menu elements don't belong to specific page
 //top menu appears on every single page
 //so we can keep them here
-//
 public class BasePage {
 
     @FindBy(css = "div[class='loader-mask shown']")
@@ -86,11 +85,15 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(module));
 
         waitUntilLoaderMaskDisappear();
+
+//        BrowserUtils.clickWithWait(module); if click is not working well
         module.click(); //once we clicked on module, submodule should be visible
 
         WebElement subModule = Driver.get().findElement(By.xpath(subModuleLocator));
         wait.until(ExpectedConditions.visibilityOf(subModule));
         subModule.click();
+        //it waits until page is loaded and ajax calls are done
+        BrowserUtils.waitForPageToLoad(5);
     }
 
     /**
